@@ -30,7 +30,7 @@ public class UserRepository {
     }
     public User findById(Long id){
         Predicate<? super User> predicate = user -> user.getId().equals(id);
-       User user =  userList.stream().filter(predicate).findFirst().get();
+       User user =  userList.stream().filter(predicate).findFirst().orElse(null);
        return user;
 
     }
