@@ -20,10 +20,21 @@ public class UserController {
     private UserRepository userRepository;
 
 
-    @RequestMapping(method = RequestMethod.GET,path = "/users")
+    @RequestMapping(method = RequestMethod.GET,path = "/users",params = "!v")
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
+
+    @RequestMapping(method = RequestMethod.GET,path = "v1/users")
+    public String getAllUsersV1(){
+        return "return all user list with v1/users";
+    }
+
+    @RequestMapping(method = RequestMethod.GET,path = "/users",params = "v=1")
+    public String getAllUsersParamV1(){
+        return "return all user list with v=1";
+    }
+
 
 
     @RequestMapping(method = RequestMethod.GET,path = "/users/{id}")
