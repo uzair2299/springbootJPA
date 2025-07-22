@@ -34,6 +34,11 @@ public class UserController {
         return byId;
     }
 
+    @RequestMapping(method = RequestMethod.DELETE,path = "/users/{id}")
+    public void deleteUserById(@PathVariable Long id){
+        userRepository.deleteById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST,path = "/users")
     public ResponseEntity<User> saveUser(@RequestBody User user){
         User savedUser =  userRepository.save(user);
@@ -41,7 +46,4 @@ public class UserController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
         return ResponseEntity.created(location).body(savedUser);
     }
-
-
-
 }

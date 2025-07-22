@@ -1,6 +1,8 @@
 package com.example.jpalearn.repository;
 
 import com.example.jpalearn.Entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -10,7 +12,7 @@ import java.util.function.Predicate;
 
 @Repository
 public class UserRepository {
-
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     private static List<User> userList = new ArrayList<>();
     private static Long usersCount =0L;
     static {
@@ -32,6 +34,11 @@ public class UserRepository {
         Predicate<? super User> predicate = user -> user.getId().equals(id);
        User user =  userList.stream().filter(predicate).findFirst().orElse(null);
        return user;
+    }
+    public void deleteById(Long id){
+        Predicate<? super User> predicate = user -> user.getId().equals(id);
+        userList.removeIf(predicate);
+        logger.info("Size after delete {}",userList.size());
 
     }
 

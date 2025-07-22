@@ -26,4 +26,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         errorDetail.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return new ResponseEntity<>(errorDetail,HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @ExceptionHandler(UserNotFoundException.class)
+    public final ResponseEntity<Object> UserNotFoundException(Exception ex, HttpServletRequest request){
+        logger.error("Going to log  UserNotFoundException error in controller advice");
+        ErrorDetail errorDetail = new ErrorDetail();
+        errorDetail.setTimestamp(LocalDateTime.now());
+        errorDetail.setMessage(ex.getMessage());
+        errorDetail.setPath( request.getRequestURI());
+        errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
+        return new ResponseEntity<>(errorDetail,HttpStatus.NOT_FOUND);
+    }
 }
