@@ -1,6 +1,9 @@
 package com.example.jpalearn.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +20,14 @@ import java.time.LocalDateTime;
 public class User {
     private Long     id;
 
+    @NotBlank(message = "Name is required")
     private String name;
 
+    @Email(message = "Email is invalid")
+    @NotBlank(message = "Email is required")
     private String email;
 
+    @Past
     private LocalDate birthday;
 
     @Override

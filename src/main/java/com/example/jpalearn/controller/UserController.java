@@ -3,6 +3,7 @@ package com.example.jpalearn.controller;
 import com.example.jpalearn.Entity.User;
 import com.example.jpalearn.exceptions.UserNotFoundException;
 import com.example.jpalearn.repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST,path = "/users")
-    public ResponseEntity<User> saveUser(@RequestBody User user){
+    public ResponseEntity<User> saveUser(@Valid @RequestBody User user){
         User savedUser =  userRepository.save(user);
         //URI location = URI.create("/users/" + savedUser.getId());
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
