@@ -3,9 +3,13 @@ package com.example.jpalearn.controller;
 import com.example.jpalearn.Entity.User;
 import com.example.jpalearn.exceptions.UserNotFoundException;
 import com.example.jpalearn.repository.UserRepository;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -20,16 +24,19 @@ public class UserController {
     private UserRepository userRepository;
 
 
+
     @RequestMapping(method = RequestMethod.GET,path = "/users",params = "!v")
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
+    //api versioning with path parameter
     @RequestMapping(method = RequestMethod.GET,path = "v1/users")
     public String getAllUsersV1(){
         return "return all user list with v1/users";
     }
 
+    //api versioning with Query parameter
     @RequestMapping(method = RequestMethod.GET,path = "/users",params = "v=1")
     public String getAllUsersParamV1(){
         return "return all user list with v=1";
@@ -58,4 +65,20 @@ public class UserController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId()).toUri();
         return ResponseEntity.created(location).body(savedUser);
     }
+
+    @RequestMapping(method = RequestMethod.GET,path = "/usersDynamicFiltering")
+    public ResponseEntity<MappingJacksonValue> getAllUsersWithDynamicFiltering(){
+       //determine whether include or exclude
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .serializeAllExcept("email");
+
+        //link the login and filter name
+        FilterProvider filters = new SimpleFilterProvider()
+                .addFilter("userFilter", filter);
+        List<User> users = userRepository.findAll();
+        MappingJacksonValue mapping = new MappingJacksonValue(users);
+        mapping.setFilters(filters);
+        return ResponseEntity.ok(mapping);
+    }
+
 }

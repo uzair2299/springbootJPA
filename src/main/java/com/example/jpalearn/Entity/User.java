@@ -1,5 +1,7 @@
 package com.example.jpalearn.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
@@ -20,6 +22,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 //@JsonIgnoreProperties({"name","email"})
+@JsonFilter("userFilter")
 public class User {
     private Long     id;
 
