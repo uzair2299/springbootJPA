@@ -1,5 +1,7 @@
 package com.example.jpalearn.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -17,12 +19,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+//@JsonIgnoreProperties({"name","email"})
 public class User {
     private Long     id;
 
     @NotBlank(message = "Name is required")
     private String name;
 
+    //@JsonIgnore
     @Email(message = "Email is invalid")
     @NotBlank(message = "Email is required")
     private String email;
