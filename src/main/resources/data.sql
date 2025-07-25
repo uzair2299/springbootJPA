@@ -65,3 +65,29 @@ INSERT INTO Review (description, rating, course_id) VALUES
 ('Too theoretical, lacked examples.', 2, 3),
 ('Excellent teaching style!', 5, 2);
 --------------------------------------------------------------------------------------
+INSERT INTO users (name, email, birthday)
+VALUES
+  ('John Doe', 'john.doe@example.com', '1990-05-12'),
+  ('Jane Smith', 'jane.smith@example.com', '1988-09-25'),
+  ('Michael Brown', 'michael.brown@example.com', '1992-01-10'),
+  ('Emily Johnson', 'emily.johnson@example.com', '1995-06-18'),
+  ('William Davis', 'william.davis@example.com', '1985-03-03'),
+  ('Olivia Garcia', 'olivia.garcia@example.com', '1999-12-05'),
+  ('Noah Martinez', 'noah.martinez@example.com', '2000-04-22'),
+  ('Sophia Wilson', 'sophia.wilson@example.com', '1987-07-11'),
+  ('Liam Anderson', 'liam.anderson@example.com', '1991-11-30'),
+  ('Ava Thomas', 'ava.thomas@example.com', '1993-08-16');
+--------------------------------------------------------------------------------------
+INSERT INTO posts (title, content, author, user_id)
+VALUES
+  ('Post 1', 'This is the content of post 1.', 'John Doe', 1),
+  ('Post 2', 'This is the content of post 2.', 'Jane Smith', 2),
+  ('Post 3', 'A short post.', 'Michael Brown', 3),
+  ('Post 4', 'Another blog post content here.', 'Emily Johnson', 4),
+  ('Post 5', 'Tech tips and tricks.', 'William Davis', 5),
+  ('Post 6', 'Opinion article about AI.', 'Olivia Garcia', 6),
+  ('Post 7', 'Travel blog entry.', 'Noah Martinez', 7),
+  ('Post 8', 'Fitness and health content.', 'Sophia Wilson', 8),
+  ('Post 9', 'Book review.', 'Liam Anderson', 9),
+  ('Post 10', 'Daily journal.', 'Ava Thomas', 10);
+--------------------------------------------------------------------------------------

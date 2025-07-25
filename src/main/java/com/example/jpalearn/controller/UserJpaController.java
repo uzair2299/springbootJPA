@@ -1,7 +1,9 @@
 package com.example.jpalearn.controller;
 
+import com.example.jpalearn.Entity.Post;
 import com.example.jpalearn.Entity.User;
 import com.example.jpalearn.exceptions.UserNotFoundException;
+import com.example.jpalearn.repository.PostRepository;
 import com.example.jpalearn.repository.UserJPARepository;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -25,6 +27,8 @@ public class UserJpaController {
 
     @Autowired
     UserJPARepository userRepository;
+    @Autowired
+    PostRepository postRepository;
 
 
     @RequestMapping(method = RequestMethod.GET, path = "/jpa/users", params = "!v")
@@ -81,5 +85,28 @@ public class UserJpaController {
         mapping.setFilters(filters);
         return ResponseEntity.ok(mapping);
     }
+    //---------------------------------------------------------
+    @RequestMapping(method = RequestMethod.GET, path = "/jpa/users/{id}/posts")
+    public List<Post> getUserPosts(@PathVariable Long id) {
+        Optional<User> byId = userRepository.findById(id);
+        if (byId.isPresent()) {
+            return byId.get().getPosts();
+        }
+        throw new UserNotFoundException("not found id -" + id);
+    }
 
+    @RequestMapping(method = RequestMethod.POST, path = "/jpa/users/{id}/posts")
+    public ResponseEntity<Post> saveUserPost(@PathVariable long id, @RequestBody Post post) {
+        Optional<User> savedUser = userRepository.findById(id);
+        if(savedUser.isPresent()){
+            post.setUser(savedUser.get());
+            post  = postRepository.save(post);
+            URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId()).toUri();
+            return ResponseEntity.created(location).body(post);
+        }
+        else {
+            throw new UserNotFoundException("User Id not found -" + id);
+        }
+
+    }
 }

@@ -16,10 +16,10 @@ public class UserRepository {
     private static List<User> userList = new ArrayList<>();
     private static Long usersCount =0L;
     static {
-        userList.add(new User(++usersCount,"Joe","joe@gmail.com", LocalDate.now().minusYears(30)));
-        userList.add(new User(++usersCount,"Jac","jac@gmail.com", LocalDate.now().minusYears(30)));
-        userList.add(new User(++usersCount,"Adam","adam@gmail.com", LocalDate.now().minusYears(30)));
-        userList.add(new User(++usersCount,"Eve","eve@gmail.com", LocalDate.now().minusYears(30)));
+        userList.add(new User(++usersCount,"Joe","joe@gmail.com", LocalDate.now().minusYears(30),null));
+        userList.add(new User(++usersCount,"Jac","jac@gmail.com", LocalDate.now().minusYears(30),null));
+        userList.add(new User(++usersCount,"Adam","adam@gmail.com", LocalDate.now().minusYears(30),null));
+        userList.add(new User(++usersCount,"Eve","eve@gmail.com", LocalDate.now().minusYears(30),null));
 
     }
     public List<User> findAll(){
