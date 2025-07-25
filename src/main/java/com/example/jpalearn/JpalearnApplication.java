@@ -19,8 +19,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JpalearnApplication implements CommandLineRunner {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Autowired
-    private AppUserRepo appUserRepo;
+//    @Autowired
+//    private AppUserRepo appUserRepo;
 
     @Autowired
     private AppUserRowMapper appUserRowMapper;
@@ -82,17 +82,17 @@ public class JpalearnApplication implements CommandLineRunner {
 
         appUserUpdate.setId(2);
 
-        logger.info("Find all user - {}", appUserRepo.findAll().toString());
-        logger.info("Find by id user - {} ",appUserRepo.findById(1).toString());
-        logger.info("Delete by id User - {}",String.valueOf(appUserRepo.deleteById(1)));
-        logger.info("Save new user - {}",String.valueOf(appUserRepo.insert(appUser)));
-        logger.info("update the existing user - {}",String.valueOf(appUserRepo.update(appUserUpdate)));
-        logger.info("Response by using row mapper - {}", appUserRepo.findAll());
+//        logger.info("Find all user - {}", appUserRepo.findAll().toString());
+//        logger.info("Find by id user - {} ",appUserRepo.findById(1).toString());
+//        logger.info("Delete by id User - {}",String.valueOf(appUserRepo.deleteById(1)));
+//        logger.info("Save new user - {}",String.valueOf(appUserRepo.insert(appUser)));
+//        logger.info("update the existing user - {}",String.valueOf(appUserRepo.update(appUserUpdate)));
+//        logger.info("Response by using row mapper - {}", appUserRepo.findAll());
 
-        logger.info("---------------------------NamedParameterJdbcTemplate Start------------------------");
-        logger.info("NamedParameterJdbcTemplate Find by Id - {}" , String.valueOf(appUserRepo.findById_(3)));
-        logger.info("NamedParameterJdbcTemplate save  = {}", String.valueOf(appUserRepo.insert_(nameParameterUser)));
-        logger.info("---------------------------NamedParameterJdbcTemplate End------------------------");
+//        logger.info("---------------------------NamedParameterJdbcTemplate Start------------------------");
+//        logger.info("NamedParameterJdbcTemplate Find by Id - {}" , String.valueOf(appUserRepo.findById_(3)));
+//        logger.info("NamedParameterJdbcTemplate save  = {}", String.valueOf(appUserRepo.insert_(nameParameterUser)));
+//        logger.info("---------------------------NamedParameterJdbcTemplate End------------------------");
     }
     
     private void runJpaEntityOps() throws InterruptedException {
@@ -149,7 +149,7 @@ public class JpalearnApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         //runJdbcTemplateOps();
         //runJpaEntityOps();
-        runJpaOneToOneOps();
+        //runJpaOneToOneOps();
         //runJpaOneToManyOps()
 
     }

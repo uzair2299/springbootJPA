@@ -1,9 +1,9 @@
-CREATE TABLE AppUser (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100),
-    email VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+--CREATE TABLE AppUser (
+--    id INT PRIMARY KEY AUTO_INCREMENT,
+--    name VARCHAR(100),
+--    email VARCHAR(100),
+--    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+--);
 
 
 INSERT INTO AppUser (name, email)
@@ -45,12 +45,12 @@ VALUES ('Design new feature', 'Sketch out UI/UX for feedback form module', false
 
 
 -----------------------------------------------------------------------------
-INSERT INTO Student (name, email, roll_Number,Status) VALUES
-('Ali Khan', 'ali.khan@example.com', 'R2025-001','ACTIVE'),
-('Fatima Zahra', 'fatima.zahra@example.com', 'R2025-002','ACTIVE'),
-('Ahmed Raza', 'ahmed.raza@example.com', 'R2025-003','ACTIVE'),
-('Sara Iqbal', 'sara.iqbal@example.com', 'R2025-004','ACTIVE'),
-('Bilal Aslam', 'bilal.aslam@example.com', 'R2025-005','ACTIVE');
+--INSERT INTO Student (name, email, roll_Number,Status) VALUES
+--('Ali Khan', 'ali.khan@example.com', 'R2025-001','ACTIVE'),
+--('Fatima Zahra', 'fatima.zahra@example.com', 'R2025-002','ACTIVE'),
+--('Ahmed Raza', 'ahmed.raza@example.com', 'R2025-003','ACTIVE'),
+--('Sara Iqbal', 'sara.iqbal@example.com', 'R2025-004','ACTIVE'),
+--('Bilal Aslam', 'bilal.aslam@example.com', 'R2025-005','ACTIVE');
 
 
 -------------------------------------------------------------------------------------
@@ -58,12 +58,12 @@ INSERT INTO course (title) VALUES ('Java for Beginners');
 INSERT INTO course (title) VALUES ('Advanced Spring Boot');
 INSERT INTO course (title) VALUES ('Database Design');
 -------------------------------------------------------------------------------------
-INSERT INTO Review (description, rating, course_id) VALUES
-('Great course, very informative!', 5, 1),
-('Average content, needs improvement.', 3, 2),
-('Loved the hands-on examples!', 4, 1),
-('Too theoretical, lacked examples.', 2, 3),
-('Excellent teaching style!', 5, 2);
+--INSERT INTO Review (description, rating, course_id) VALUES
+--('Great course, very informative!', 5, 1),
+--('Average content, needs improvement.', 3, 2),
+--('Loved the hands-on examples!', 4, 1),
+--('Too theoretical, lacked examples.', 2, 3),
+--('Excellent teaching style!', 5, 2);
 --------------------------------------------------------------------------------------
 INSERT INTO users (name, email, birthday)
 VALUES

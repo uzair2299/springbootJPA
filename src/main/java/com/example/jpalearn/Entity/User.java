@@ -17,11 +17,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity(name = "users")
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "users")
 //@JsonIgnoreProperties({"name","email"})
 //@JsonFilter("userFilter")
 public class User {
